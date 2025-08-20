@@ -1,0 +1,66 @@
+name: Generate Artifacts
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    tags:
+      - '*'
+
+jobs:
+  generate-artifacts:
+    name: kicad export
+    runs-on: ubuntu-latest
+    container: "setsoft/kicad_auto:ki9"
+
+    steps:
+    - name: Checkout repository with submodules
+      uses: actions/checkout@v4
+      with:
+        submodules: true
+
+    - name: Set ROOT environment variable
+      run: echo "ROOT=$(pwd)" >> $GITHUB_ENV
+
+    - name: Set current date as env variable
+      run: echo "NOW=$(date +'%Y%m%d_%H%M%S')" >> $GITHUB_ENV
+
+    - name: Create fp-lib-table file
+      run: |
+        cat <<EOF > fp-lib-table
+        (fp_lib_table
+          (version 8)
+          (lib (name "pepy_sym_lib")(type "KiCad")(uri "${ROOT}/kicad_components/pepy_sym_lib.pretty")(options "")(descr ""))
+        )
+        EOF
+
+    - name: Create sym-lib-table file
+      run: |
+        cat <<EOF > sym-lib-table
+        (sym_lib_table
+          (version 8)
+          (lib (name "pepy_sym_lib")(type "KiCad")(uri "${ROOT}/kicad_components/pepy_sym_lib.kicad_sym")(options "")(descr ""))
+        )
+        EOF
+
+    - name: Replace library path in .kicad_pcb files
+      run: |
+        LIB_PATH="./kicad_components/original_components"
+        for PCB_FILE in *.kicad_pcb; do
+            if [ -f "$PCB_FILE" ]; then
+                sed -i '/model/s|\${ORIGINAL_COMPONENTS}|'$LIB_PATH'|g' "$PCB_FILE"
+                echo "Replacement complete in $PCB_FILE."
+            fi
+        done
+
+    - name: Generate Gerber files
+      run: |
+        kibot -c kibot_config.yaml
+        ls fabrication_output
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: fabrication_output_${{ env.NOW }}
+        path: fabrication_output/
