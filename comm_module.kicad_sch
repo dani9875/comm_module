@@ -6289,6 +6289,15 @@
 					(hide yes)
 				)
 			)
+			(property "Manufacturer" "STMicroelectronics"
+				(at 0 -18.542 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
 			(property "ki_keywords" "ESD_PROTECTION"
 				(at 0 0 0)
 				(effects
@@ -12684,6 +12693,15 @@
 					(hide yes)
 				)
 			)
+			(property "Manufacturer" "XUNPU"
+				(at 0 -19.558 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
 			(symbol "[U_SIM]XUNPU SMN-305-ARP7_0_1"
 				(rectangle
 					(start -3.81 3.81)
@@ -18782,6 +18800,15 @@
 		)
 		(property "LCSC Part" "C720512"
 			(at 251.968 146.304 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "XUNPU"
+			(at 251.46 150.368 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -29550,6 +29577,15 @@
 		)
 		(property "Package" "SOT-666-6"
 			(at 284.226 192.024 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "STMicroelectronics"
+			(at 284.48 193.802 0)
 			(effects
 				(font
 					(size 1.27 1.27)
