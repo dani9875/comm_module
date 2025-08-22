@@ -48,7 +48,7 @@
         "silk_text_thickness": 0.1,
         "silk_text_upright": false,
         "zones": {
-          "min_clearance": 0.2
+          "min_clearance": 0.25
         }
       },
       "diff_pair_dimensions": [
@@ -497,7 +497,7 @@
         "name": "RF",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 0,
-        "schematic_color": "rgb(0, 255, 0)",
+        "schematic_color": "rgb(0, 0, 72)",
         "track_width": 0.1713,
         "via_diameter": 0.6,
         "via_drill": 0.3
@@ -509,9 +509,9 @@
         "microvia_diameter": 0.3,
         "microvia_drill": 0.1,
         "name": "USB_COMM",
-        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "pcb_color": "rgb(0, 194, 194)",
         "priority": 1,
-        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "schematic_color": "rgb(0, 194, 194)",
         "track_width": 0.2,
         "via_diameter": 0.6,
         "via_drill": 0.3
@@ -544,6 +544,15 @@
         "RF"
       ],
       "Net-(C20-Pad2)": [
+        "RF"
+      ],
+      "Net-(D7-A)": [
+        "RF"
+      ],
+      "Net-(D8-A)": [
+        "RF"
+      ],
+      "Net-(D9-A)": [
         "RF"
       ],
       "Net-(J5-Pad1)": [
@@ -593,6 +602,30 @@
       {
         "netclass": "RF",
         "pattern": "/GNSS_ANT"
+      },
+      {
+        "netclass": "USB_COMM",
+        "pattern": "/DFILT+"
+      },
+      {
+        "netclass": "USB_COMM",
+        "pattern": "/DFILT-"
+      },
+      {
+        "netclass": "USB_COMM",
+        "pattern": "/DCOMM-"
+      },
+      {
+        "netclass": "USB_COMM",
+        "pattern": "/DCOMM+"
+      },
+      {
+        "netclass": "USB_COMM",
+        "pattern": "/DR+"
+      },
+      {
+        "netclass": "USB_COMM",
+        "pattern": "/DR-"
       }
     ]
   },
